@@ -1,124 +1,124 @@
 /* Reset and Base Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
-    height: 100%; /* Ensure body takes full height */
-    overflow: hidden; /* Prevent scrollbars on body */
+  height: 100%; /* Ensure body takes full height */
+  overflow: hidden; /* Prevent scrollbars on body */
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #fce4ec; /* Soft pink background */
-    font-family: 'Dancing Script', cursive; /* Romantic font */
-    position: relative; /* Needed for absolute positioning */
-    padding: 10px; /* Add some padding for smaller screens */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fce4ec; /* Soft pink background */
+  font-family: 'Dancing Script', cursive; /* Romantic font */
+  position: relative; /* Needed for absolute positioning */
+  padding: 10px; /* Add some padding for smaller screens */
 }
 
 /* Background Animation Container */
 .background-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
 }
 
 /* Floating Hearts Animation */
 @keyframes floatHearts {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; } /* Go further up */
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; } /* Go further up */
 }
 
 .heart-particle {
-    position: absolute;
-    bottom: -30px; /* Start further below */
-    font-size: 1.5em;
-    color: rgba(255, 105, 180, 0.5); /* Lighter hearts */
-    animation: floatHearts 12s linear infinite; /* Slower animation */
-    animation-delay: var(--delay);
-    left: var(--left);
-    pointer-events: none; /* Prevent interaction */
+  position: absolute;
+  bottom: -30px; /* Start further below */
+  font-size: 1.5em;
+  color: rgba(255, 105, 180, 0.5); /* Lighter hearts */
+  animation: floatHearts 12s linear infinite; /* Slower animation */
+  animation-delay: var(--delay);
+  left: var(--left);
+  pointer-events: none; /* Prevent interaction */
 }
 
 /* Music Button */
 .music-button {
-    position: fixed; /* Keep it fixed on screen */
-    top: 15px;
-    right: 15px;
-    z-index: 300; /* Above everything */
-    padding: 8px 12px;
-    font-size: 1em;
-    font-family: sans-serif; /* Use a standard font for UI */
-    cursor: pointer;
-    background-color: rgba(233, 30, 99, 0.8); /* Semi-transparent pink */
-    color: white;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    transition: background-color 0.3s, transform 0.2s;
+  position: fixed; /* Keep it fixed on screen */
+  top: 15px;
+  right: 15px;
+  z-index: 300; /* Above everything */
+  padding: 8px 12px;
+  font-size: 1em;
+  font-family: sans-serif; /* Use a standard font for UI */
+  cursor: pointer;
+  background-color: rgba(233, 30, 99, 0.8); /* Semi-transparent pink */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .music-button:hover {
-    background-color: rgba(194, 24, 91, 0.9);
-    transform: scale(1.05);
+  background-color: rgba(194, 24, 91, 0.9);
+  transform: scale(1.05);
 }
 
 /* Book Styles */
 .book-container {
-    perspective: 2500px;
-    position: relative;
-    /* Desktop first dimensions */
-    width: 80vw; /* Slightly narrower */
-    max-width: 900px;
-    height: 70vh; /* Slightly taller */
-    max-height: 600px;
-    margin-top: 20px; /* Adjust margin */
+  perspective: 2500px;
+  position: relative;
+  /* Desktop first dimensions */
+  width: 80vw; /* Slightly narrower */
+  max-width: 900px;
+  height: 70vh; /* Slightly taller */
+  max-height: 600px;
+  margin-top: 20px; /* Adjust margin */
 }
 
 .book {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 .page {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    background-color: #fff8f9;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.08);
-    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    overflow: hidden; /* Content overflow hidden */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center;
-    padding: 20px; /* Default padding */
-    border: 1px solid #f8bbd0;
-    backface-visibility: hidden;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: #fff8f9;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.08);
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  overflow: hidden; /* Content overflow hidden */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center;
+  padding: 20px; /* Default padding */
+  border: 1px solid #f8bbd0;
+  backface-visibility: hidden;
 }
 
 /* Page Decorations */
 .page::before, .page::after {
-    content: '\2740';
-    position: absolute;
-    font-size: 1.3em; /* Slightly smaller */
-    color: #f4acb7;
-    opacity: 0.5;
-    z-index: 1;
+  content: '\2740';
+  position: absolute;
+  font-size: 1.3em; /* Slightly smaller */
+  color: #f4acb7;
+  opacity: 0.5;
+  z-index: 1;
 }
 
 .page::before { top: 10px; left: 10px; }
@@ -146,37 +146,37 @@ body {
 
 /* Page Content Styling */
 .page-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around; /* Distribute space */
-    align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 5px 0; /* Reduced vertical padding */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Distribute space */
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 5px 0; /* Reduced vertical padding */
 }
 
 .page-image {
-    display: block; /* Ensure it behaves like a block */
-    max-width: 90%; /* Allow slightly wider images */
-    max-height: 50%; /* Adjust max height */
-    object-fit: contain;
-    margin-top: 5px; /* Space above image */
-    margin-bottom: 10px; /* Space below image */
-    border-radius: 6px; /* Smaller radius */
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  display: block; /* Ensure it behaves like a block */
+  max-width: 90%; /* Allow slightly wider images */
+  max-height: 50%; /* Adjust max height */
+  object-fit: contain;
+  margin-top: 5px; /* Space above image */
+  margin-bottom: 10px; /* Space below image */
+  border-radius: 6px; /* Smaller radius */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
 .editable-text {
-    font-size: 1.3em;
-    color: #ad1457;
-    line-height: 1.5;
-    padding: 5px;
-    border: 1px dashed transparent;
-    cursor: text;
-    max-width: 95%; /* Allow text closer to edge */
-    overflow-wrap: break-word; /* Break long words if needed */
+  font-size: 1.3em;
+  color: #ad1457;
+  line-height: 1.5;
+  padding: 5px;
+  border: 1px dashed transparent;
+  cursor: text;
+  max-width: 95%; /* Allow text closer to edge */
+  overflow-wrap: break-word; /* Break long words if needed */
 }
 
 .editable-text:focus { outline: none; border-color: #f48fb1; background-color: rgba(255, 248, 249, 0.5); }
@@ -184,29 +184,29 @@ body {
 
 /* Navigation Buttons */
 .navigation-buttons {
-    position: absolute;
-    bottom: 10px; /* Closer to bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 200;
-    width: 90%; /* Limit width */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between; /* Space out buttons */
+  position: absolute;
+  bottom: 10px; /* Closer to bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: 90%; /* Limit width */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space out buttons */
 }
 
 .navigation-buttons button {
-    padding: 10px 20px;
-    margin: 0 5px; /* Reduced margin */
-    font-size: 1em;
-    font-family: 'Dancing Script', cursive;
-    cursor: pointer;
-    background-color: #e91e63;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    flex-shrink: 0; /* Prevent buttons from shrinking too much */
+  padding: 10px 20px;
+  margin: 0 5px; /* Reduced margin */
+  font-size: 1em;
+  font-family: 'Dancing Script', cursive;
+  cursor: pointer;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  flex-shrink: 0; /* Prevent buttons from shrinking too much */
 }
 
 .navigation-buttons button:hover { background-color: #c2185b; transform: translateY(-2px); }
@@ -220,84 +220,84 @@ body {
 
 /* Medium Screens / Tablets (Portrait) */
 @media (max-width: 900px) and (orientation: portrait) {
-    .book-container {
-        width: 90vw;
-        height: 65vh;
-    }
-    .editable-text { font-size: 1.2em; }
-    .cover-title { font-size: 2.2em; }
-    .cover-subtitle { font-size: 1.3em; }
+  .book-container {
+      width: 90vw;
+      height: 65vh;
+  }
+  .editable-text { font-size: 1.2em; }
+  .cover-title { font-size: 2.2em; }
+  .cover-subtitle { font-size: 1.3em; }
 }
 
 /* Small Screens / Smartphones */
 @media (max-width: 600px) {
-    body {
-        padding: 5px; /* Less padding */
-    }
-    .book-container {
-        width: 96vw; /* Almost full width */
-        height: 75vh; /* Taller */
-        margin-top: 10px;
-        perspective: 1800px; /* Less perspective */
-    }
+  body {
+      padding: 5px; /* Less padding */
+  }
+  .book-container {
+      width: 96vw; /* Almost full width */
+      height: 75vh; /* Taller */
+      margin-top: 10px;
+      perspective: 1800px; /* Less perspective */
+  }
 
-    .page {
-        padding: 10px; /* Less padding */
-    }
+  .page {
+      padding: 10px; /* Less padding */
+  }
 
-    .page::before, .page::after {
-        font-size: 1em; /* Smaller decorations */
-        top: 8px; left: 8px;
-    }
-    .page::after { bottom: 8px; right: 8px; }
+  .page::before, .page::after {
+      font-size: 1em; /* Smaller decorations */
+      top: 8px; left: 8px;
+  }
+  .page::after { bottom: 8px; right: 8px; }
 
-    .cover-title {
-        font-size: 1.8em;
-    }
-    .cover-subtitle, .cover-closing {
-        font-size: 1.1em;
-    }
-    .cover-name { font-size: 1em; }
-    .cover-decoration { font-size: 2.2em; margin-top: 10px; }
+  .cover-title {
+      font-size: 1.8em;
+  }
+  .cover-subtitle, .cover-closing {
+      font-size: 1.1em;
+  }
+  .cover-name { font-size: 1em; }
+  .cover-decoration { font-size: 2.2em; margin-top: 10px; }
 
-    .page-image {
-        max-height: 45%; /* Adjust image height */
-        max-width: 85%;
-    }
+  .page-image {
+      max-height: 45%; /* Adjust image height */
+      max-width: 85%;
+  }
 
-    .editable-text {
-        font-size: 1em; /* Smaller font */
-        line-height: 1.4;
-        max-width: 92%;
-    }
+  .editable-text {
+      font-size: 1em; /* Smaller font */
+      line-height: 1.4;
+      max-width: 92%;
+  }
 
-    .navigation-buttons {
-        bottom: 5px; /* Even closer to bottom */
-        width: 100%; /* Full width container */
-    }
+  .navigation-buttons {
+      bottom: 5px; /* Even closer to bottom */
+      width: 100%; /* Full width container */
+  }
 
-    .navigation-buttons button {
-        padding: 8px 15px;
-        font-size: 0.9em;
-        margin: 0 3px;
-    }
+  .navigation-buttons button {
+      padding: 8px 15px;
+      font-size: 0.9em;
+      margin: 0 3px;
+  }
 
-    .music-button {
-        top: 10px;
-        right: 10px;
-        padding: 6px 10px;
-        font-size: 0.9em;
-    }
+  .music-button {
+      top: 10px;
+      right: 10px;
+      padding: 6px 10px;
+      font-size: 0.9em;
+  }
 
-    .heart-particle {
-        font-size: 1.2em;
-    }
+  .heart-particle {
+      font-size: 1.2em;
+  }
 }
 
 /* Extra Small Screens */
 @media (max-width: 400px) {
-     .cover-title { font-size: 1.6em; }
-     .editable-text { font-size: 0.9em; }
-     .navigation-buttons button { padding: 6px 10px; font-size: 0.8em; }
+   .cover-title { font-size: 1.6em; }
+   .editable-text { font-size: 0.9em; }
+   .navigation-buttons button { padding: 6px 10px; font-size: 0.8em; }
 }
 
