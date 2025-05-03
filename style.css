@@ -1,349 +1,303 @@
 /* Reset and Base Styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure body takes full height */
+    overflow: hidden; /* Prevent scrollbars on body */
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #fce4ec; /* Soft pink background */
-  font-family: 'Dancing Script', cursive; /* Romantic font */
-  overflow: hidden; /* Hide scrollbars */
-  position: relative; /* Needed for absolute positioning of background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fce4ec; /* Soft pink background */
+    font-family: 'Dancing Script', cursive; /* Romantic font */
+    position: relative; /* Needed for absolute positioning */
+    padding: 10px; /* Add some padding for smaller screens */
 }
 
 /* Background Animation Container */
 .background-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Behind everything */
-  overflow: hidden; /* Contain the particles */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
 }
 
 /* Floating Hearts Animation */
 @keyframes floatHearts {
-  0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-  }
-  100% {
-      transform: translateY(-100vh) rotate(720deg);
-      opacity: 0;
-  }
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; } /* Go further up */
 }
 
 .heart-particle {
-  position: absolute;
-  bottom: -20px; /* Start below the screen */
-  font-size: 1.5em; /* Adjust size */
-  color: rgba(255, 105, 180, 0.6); /* Pink hearts with some transparency */
-  animation: floatHearts 10s linear infinite;
-  animation-delay: var(--delay);
-  left: var(--left);
+    position: absolute;
+    bottom: -30px; /* Start further below */
+    font-size: 1.5em;
+    color: rgba(255, 105, 180, 0.5); /* Lighter hearts */
+    animation: floatHearts 12s linear infinite; /* Slower animation */
+    animation-delay: var(--delay);
+    left: var(--left);
+    pointer-events: none; /* Prevent interaction */
+}
+
+/* Music Button */
+.music-button {
+    position: fixed; /* Keep it fixed on screen */
+    top: 15px;
+    right: 15px;
+    z-index: 300; /* Above everything */
+    padding: 8px 12px;
+    font-size: 1em;
+    font-family: sans-serif; /* Use a standard font for UI */
+    cursor: pointer;
+    background-color: rgba(233, 30, 99, 0.8); /* Semi-transparent pink */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.music-button:hover {
+    background-color: rgba(194, 24, 91, 0.9);
+    transform: scale(1.05);
 }
 
 /* Book Styles */
 .book-container {
-  perspective: 2500px; /* Stronger 3D effect */
-  position: relative;
-  width: 90vw; /* Use viewport width */
-  max-width: 900px; /* Max width */
-  height: 60vh; /* Use viewport height */
-  max-height: 600px; /* Max height */
-  margin-top: 30px;
+    perspective: 2500px;
+    position: relative;
+    /* Desktop first dimensions */
+    width: 80vw; /* Slightly narrower */
+    max-width: 900px;
+    height: 70vh; /* Slightly taller */
+    max-height: 600px;
+    margin-top: 20px; /* Adjust margin */
 }
 
 .book {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 .page {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  background-color: #fff8f9; /* Creamy page color */
-  box-shadow: inset 0 0 8px rgba(0,0,0,0.08); /* Inner shadow */
-  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); /* Smooth flip */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
-  border: 1px solid #f8bbd0; /* Subtle border */
-  backface-visibility: hidden; /* Hide back during flip */
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #fff8f9;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.08);
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    overflow: hidden; /* Content overflow hidden */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center;
+    padding: 20px; /* Default padding */
+    border: 1px solid #f8bbd0;
+    backface-visibility: hidden;
 }
 
 /* Page Decorations */
 .page::before, .page::after {
-  content: '\2740'; /* Unicode snowflake/flourish */
-  position: absolute;
-  font-size: 1.5em;
-  color: #f4acb7; /* Light pink decoration */
-  opacity: 0.6;
-  z-index: 1; /* Ensure decoration is above content potentially */
+    content: '\2740';
+    position: absolute;
+    font-size: 1.3em; /* Slightly smaller */
+    color: #f4acb7;
+    opacity: 0.5;
+    z-index: 1;
 }
 
-.page::before {
-  top: 15px;
-  left: 15px;
-}
+.page::before { top: 10px; left: 10px; }
+.page::after { bottom: 10px; right: 10px; }
 
-.page::after {
-  bottom: 15px;
-  right: 15px;
-}
+/* Positioning & Transform Origins */
+.page.cover-front { left: 0; transform-origin: right center; z-index: 100; background: linear-gradient(to right, #ff8a80, #ffcdb2); color: #fff; text-align: center; border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+.page.page-left { left: 0; transform-origin: right center; border-right: 1px dashed #f4acb7; transform: rotateY(180deg); }
+.page.page-right { left: 50%; transform-origin: left center; border-left: 1px dashed #f4acb7; }
+.page.cover-back { left: 0; transform-origin: right center; z-index: 0; transform: rotateY(180deg); background: linear-gradient(to left, #ff8a80, #ffcdb2); color: #fff; text-align: center; border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
 
-/* Initial Positioning & Transform Origins */
-.page.cover-front {
-  left: 0;
-  transform-origin: right center; /* Flips open from the right */
-  z-index: 100; /* Highest initial z-index */
-  background: linear-gradient(to right, #ff8a80, #ffcdb2);
-  color: #fff;
-  text-align: center;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
+/* Flipped State */
+.page.flipped { transform: rotateY(0deg); }
+.page.cover-front.flipped { transform: rotateY(-180deg); }
+.page.page-right.flipped { transform: rotateY(-180deg); }
 
-.page.page-left {
-  left: 0;
-  transform-origin: right center;
-  border-right: 1px dashed #f4acb7;
-  transform: rotateY(180deg); /* Initially flipped back */
-}
-
-.page.page-right {
-  left: 50%;
-  transform-origin: left center;
-  border-left: 1px dashed #f4acb7;
-}
-
-.page.cover-back {
-  left: 0; /* Positioned like a left page */
-  transform-origin: right center;
-  z-index: 0; /* Lowest initial z-index */
-  transform: rotateY(180deg); /* Initially flipped back */
-  background: linear-gradient(to left, #ff8a80, #ffcdb2);
-  color: #fff;
-  text-align: center;
-  border-top-right-radius: 10px; /* Should be on the flipped side */
-  border-bottom-right-radius: 10px;
-}
-
-/* Flipped State - Handled by JS adding/removing 'flipped' class */
-.page.flipped {
-  /* Left pages flip open */
-  transform: rotateY(0deg);
-}
-
-.page.cover-front.flipped {
-   /* Front cover flips open (like a left page) */
-  transform: rotateY(-180deg);
-}
-
-.page.page-right.flipped {
-  /* Right pages flip over */
-  transform: rotateY(-180deg);
-}
-
-/* Cover Specific Styles */
-.cover .page-content {
-  /* Adjust cover content if needed */
-}
-
-.cover-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.8em;
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-.cover-subtitle {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}
-
-.cover-decoration {
-  font-size: 3em;
-  color: #fff;
-  opacity: 0.8;
-  margin-top: 20px;
-}
-
-.cover-closing {
-  font-size: 1.6em;
-  margin-bottom: 10px;
-}
-
-.cover-name {
-  font-size: 1.4em;
-  font-style: italic;
-}
-
-.cover::before, .cover::after {
-  color: #fff;
-  opacity: 0.7;
-}
+/* Cover Styles */
+.cover .page-content { /* No specific changes needed now */ }
+.cover-title { font-family: 'Pacifico', cursive; font-size: 2.5em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+.cover-subtitle { font-size: 1.4em; margin-bottom: 15px; }
+.cover-decoration { font-size: 2.8em; color: #fff; opacity: 0.8; margin-top: 15px; }
+.cover-closing { font-size: 1.5em; margin-bottom: 8px; }
+.cover-name { font-size: 1.3em; font-style: italic; }
+.cover::before, .cover::after { color: #fff; opacity: 0.7; }
 
 /* Page Content Styling */
 .page-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  padding: 10px 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distribute space */
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 5px 0; /* Reduced vertical padding */
 }
 
 .page-image {
-  max-width: 85%;
-  max-height: 55%;
-  object-fit: contain;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: block; /* Ensure it behaves like a block */
+    max-width: 90%; /* Allow slightly wider images */
+    max-height: 50%; /* Adjust max height */
+    object-fit: contain;
+    margin-top: 5px; /* Space above image */
+    margin-bottom: 10px; /* Space below image */
+    border-radius: 6px; /* Smaller radius */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
 .editable-text {
-  font-size: 1.4em;
-  color: #ad1457;
-  line-height: 1.6;
-  padding: 5px;
-  border: 1px dashed transparent;
-  cursor: text;
-  max-width: 90%;
+    font-size: 1.3em;
+    color: #ad1457;
+    line-height: 1.5;
+    padding: 5px;
+    border: 1px dashed transparent;
+    cursor: text;
+    max-width: 95%; /* Allow text closer to edge */
+    overflow-wrap: break-word; /* Break long words if needed */
 }
 
-.editable-text:focus {
-  outline: none;
-  border-color: #f48fb1;
-  background-color: rgba(255, 248, 249, 0.5);
-}
-
-.romantic-text {
-  font-style: italic;
-}
+.editable-text:focus { outline: none; border-color: #f48fb1; background-color: rgba(255, 248, 249, 0.5); }
+.romantic-text { font-style: italic; }
 
 /* Navigation Buttons */
 .navigation-buttons {
-  position: absolute;
-  bottom: 20px; /* Increased bottom margin */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 200; /* Ensure buttons are above book */
+    position: absolute;
+    bottom: 10px; /* Closer to bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    width: 90%; /* Limit width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out buttons */
 }
 
 .navigation-buttons button {
-  padding: 12px 25px;
-  margin: 0 15px;
-  font-size: 1.1em;
-  font-family: 'Dancing Script', cursive;
-  cursor: pointer;
-  background-color: #e91e63;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 10px 20px;
+    margin: 0 5px; /* Reduced margin */
+    font-size: 1em;
+    font-family: 'Dancing Script', cursive;
+    cursor: pointer;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    flex-shrink: 0; /* Prevent buttons from shrinking too much */
 }
 
-.navigation-buttons button:hover {
-  background-color: #c2185b;
-  transform: translateY(-2px);
-}
-
-.navigation-buttons button:disabled {
-  background-color: #f8bbd0;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
+.navigation-buttons button:hover { background-color: #c2185b; transform: translateY(-2px); }
+.navigation-buttons button:disabled { background-color: #f8bbd0; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* Page Turn Effects Container */
-#page-turn-effects {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 199; /* Below buttons, above book potentially */
+#page-turn-effects { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 199; }
+.effect-element { position: absolute; }
+
+/* --- Responsive Design --- */
+
+/* Medium Screens / Tablets (Portrait) */
+@media (max-width: 900px) and (orientation: portrait) {
+    .book-container {
+        width: 90vw;
+        height: 65vh;
+    }
+    .editable-text { font-size: 1.2em; }
+    .cover-title { font-size: 2.2em; }
+    .cover-subtitle { font-size: 1.3em; }
 }
 
-.effect-element {
-  position: absolute;
+/* Small Screens / Smartphones */
+@media (max-width: 600px) {
+    body {
+        padding: 5px; /* Less padding */
+    }
+    .book-container {
+        width: 96vw; /* Almost full width */
+        height: 75vh; /* Taller */
+        margin-top: 10px;
+        perspective: 1800px; /* Less perspective */
+    }
+
+    .page {
+        padding: 10px; /* Less padding */
+    }
+
+    .page::before, .page::after {
+        font-size: 1em; /* Smaller decorations */
+        top: 8px; left: 8px;
+    }
+    .page::after { bottom: 8px; right: 8px; }
+
+    .cover-title {
+        font-size: 1.8em;
+    }
+    .cover-subtitle, .cover-closing {
+        font-size: 1.1em;
+    }
+    .cover-name { font-size: 1em; }
+    .cover-decoration { font-size: 2.2em; margin-top: 10px; }
+
+    .page-image {
+        max-height: 45%; /* Adjust image height */
+        max-width: 85%;
+    }
+
+    .editable-text {
+        font-size: 1em; /* Smaller font */
+        line-height: 1.4;
+        max-width: 92%;
+    }
+
+    .navigation-buttons {
+        bottom: 5px; /* Even closer to bottom */
+        width: 100%; /* Full width container */
+    }
+
+    .navigation-buttons button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+        margin: 0 3px;
+    }
+
+    .music-button {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+
+    .heart-particle {
+        font-size: 1.2em;
+    }
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-  .book-container {
-      height: 65vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .book-container {
-      width: 95vw;
-      height: 70vh;
-      margin-top: 15px;
-  }
-
-  .page {
-      padding: 15px;
-  }
-
-  .page::before, .page::after {
-      font-size: 1.2em;
-      top: 10px;
-      left: 10px;
-  }
-  .page::after {
-      bottom: 10px;
-      right: 10px;
-  }
-
-  .cover-title {
-      font-size: 2em;
-  }
-
-  .cover-subtitle, .cover-closing {
-      font-size: 1.2em;
-  }
-
-  .editable-text {
-      font-size: 1.1em;
-  }
-
-  .navigation-buttons {
-      bottom: 10px;
-  }
-
-  .navigation-buttons button {
-      padding: 10px 20px;
-      font-size: 1em;
-      margin: 0 8px;
-  }
-
-  .page-image {
-      max-height: 50%;
-  }
+/* Extra Small Screens */
+@media (max-width: 400px) {
+     .cover-title { font-size: 1.6em; }
+     .editable-text { font-size: 0.9em; }
+     .navigation-buttons button { padding: 6px 10px; font-size: 0.8em; }
 }
 
