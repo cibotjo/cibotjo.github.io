@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kejutan Ulang Tahun Romantis (Flip Book)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Container untuk animasi latar belakang -->
+    <div class="background-animation"></div>
+
+    <!-- Pemutar Musik -->
+    <audio id="background-music" loop>
+        <source src="romantic.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <button id="music-toggle-btn" class="music-button">&#128266; Musik</button> <!-- Speaker icon -->
+
+    <div class="book-container">
+        <div class="book" id="book">
+            <!-- Halaman Sampul Depan (Awalnya terlihat) -->
+            <div class="page cover cover-front" data-page-depth="0">
+                <div class="page-content">
+                    <h1 class="cover-title">Untuk Istriku Tercinta</h1>
+                    <p class="cover-subtitle">Selamat Ulang Tahun, Sayang!</p>
+                    <div class="cover-decoration">&#10047;</div>
+                </div>
+            </div>
+
+            <!-- Halaman 1 (Kiri - Balik Sampul Depan) -->
+            <div class="page page-left" data-page-depth="1">
+                <div class="page-content">
+                     <p contenteditable="true" class="editable-text romantic-text">Senyummu adalah mentari pagiku, tawamu adalah melodi terindah. Terima kasih telah mewarnai hidupku.</p>
+                    <img src="images/photo2.jpg" alt="Foto Kenangan 2" class="page-image">
+                </div>
+            </div>
+            <!-- Halaman 2 (Kanan - Pasangan Halaman 1) -->
+            <div class="page page-right" data-page-depth="1">
+                <div class="page-content">
+                    <img src="images/photo1.jpg" alt="Foto Kenangan 1" class="page-image">
+                    <p contenteditable="true" class="editable-text romantic-text">Di hari spesialmu ini, aku ingin kau tahu betapa berartinya dirimu bagiku. Setiap detik bersamamu adalah anugerah.</p>
+                </div>
+            </div>
+
+            <!-- Halaman 3 (Kiri) -->
+            <div class="page page-left" data-page-depth="2">
+                 <div class="page-content">
+                     <p contenteditable="true" class="editable-text romantic-text">Semoga di usiamu yang baru ini, kebahagiaan selalu menyertaimu, seperti kamu yang selalu membahagiakanku.</p>
+                    <img src="images/photo4.jpg" alt="Foto Kenangan 4" class="page-image">
+                </div>
+            </div>
+            <!-- Halaman 4 (Kanan) -->
+            <div class="page page-right" data-page-depth="2">
+                <div class="page-content">
+                    <img src="images/photo3.jpg" alt="Foto Kenangan 3" class="page-image">
+                    <p contenteditable="true" class="editable-text romantic-text">Mengingat semua kenangan indah kita membuatku semakin jatuh cinta padamu setiap hari.</p>
+                </div>
+            </div>
+
+             <!-- Halaman 5 (Kiri) -->
+            <div class="page page-left" data-page-depth="3">
+                 <div class="page-content">
+                     <p contenteditable="true" class="editable-text romantic-text">Teruslah bersinar, Sayang. Dunia menjadi tempat yang lebih indah karenamu.</p>
+                    <img src="images/photo6.jpg" alt="Foto Kenangan 6" class="page-image">
+                </div>
+            </div>
+             <!-- Halaman 6 (Kanan) -->
+            <div class="page page-right" data-page-depth="3">
+               <div class="page-content">
+                    <img src="images/photo5.jpg" alt="Foto Kenangan 5" class="page-image">
+                    <p contenteditable="true" class="editable-text romantic-text">Aku mencintaimu lebih dari kata-kata yang bisa kuucapkan. Selamat ulang tahun, belahan jiwaku.</p>
+                </div>
+            </div>
+
+            <!-- Halaman Sampul Belakang (Awalnya tersembunyi) -->
+            <div class="page cover cover-back" data-page-depth="4">
+                 <div class="page-content">
+                    <div class="cover-decoration">&#10047;</div>
+                    <p class="cover-closing">Dengan segenap Cinta,</p>
+                    <p contenteditable="true" class="editable-text cover-name">[Nama Suami]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container untuk efek transisi -->
+        <div id="page-turn-effects"></div>
+
+        <div class="navigation-buttons">
+            <button id="prev-page-btn">&#9664; Sebelumnya</button>
+            <button id="next-page-btn">Selanjutnya &#9654;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
